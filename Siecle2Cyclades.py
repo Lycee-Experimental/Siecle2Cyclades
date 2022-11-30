@@ -7,7 +7,7 @@ import pandas as pd
 from datetime import datetime
 import sys
 from PyQt5.QtWidgets import (QApplication, QWidget, QDesktopWidget, QFileDialog, QPushButton, QLabel, QVBoxLayout, QMessageBox)
-from PyQt5.QtCore import QDir, Qt
+from PyQt5.QtCore import QDir, Qt, QTranslator, QLocale, QLibraryInfo
 
 class DialogApp(QWidget):
 	def __init__(self):
@@ -117,7 +117,10 @@ communes = {"l'abergement-clemenciat": '01001', "l'abergement-de-varey": '01002'
 
 if __name__ == '__main__':
 	app = QApplication(sys.argv)
-
+	locale = QLocale.system().name()
+	translator = QTranslator ()
+	if translator.load("qt_{}".format(locale), QLibraryInfo.location(QLibraryInfo.TranslationsPath)):
+		app.installTranslator(translator)
 	demo = DialogApp()
 	demo.show()
 
