@@ -5,7 +5,8 @@ Ce logiciel sert à générer les fichiers .csv nécessaires à l'inscription de
 ## Installation
 
 L'installation est automatisée sur un système Linux à base debian (Debian, Ubuntu, Linux Mint...).
-Ouvrir un terminal et y copier/coller la commande suivante : 
+
+Ouvrir un terminal (depuis le menu ou CTRL+T) et y copier/coller la commande suivante : 
 
 ```shell
 wget -q -O - "https://raw.githubusercontent.com/Lycee-Experimental/Siecle2Cyclades/main/install.sh" | bash
