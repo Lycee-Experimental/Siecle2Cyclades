@@ -58,6 +58,8 @@ class DialogApp(QWidget):
 		df.replace({'LVA': LV, 'LVB': LV}, regex=True, inplace=True)
 		# Remplacement des pays de naissance et nationalités par les code pays
 		df.replace({'pays_naissance': pays, 'nationalite': pays}, inplace=True)
+		# Codes postaux sont des entiers
+		df['code_postal'] = df['code_postal'].astype(int)
 		# On met les communes en minuscule et enlève les doubles espaces (apris arrondissement)
 		df['commune_naissance'] = df['commune_naissance'].str.lower().replace(r'\s+', ' ', regex=True)
 		# Si étranger
