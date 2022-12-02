@@ -65,6 +65,8 @@ class DialogApp(QWidget):
 		# Si étranger
 		mask = df.pays_naissance != 100
 		df.loc[mask, 'commune_naissance'] = df['Ville Naiss. Etrangère']
+		# On s'assure que adresse_1 est non nul
+		df["adresse_1"] = df["adresse_1"].fillna(df["adresse_2"]).fillna(df["adresse_3"]).fillna(df["adresse_4"])
 		# Si France
 		mask = df.pays_naissance == 100
 		# On chappe le dico des commune en enlevant accents et Majuscules
