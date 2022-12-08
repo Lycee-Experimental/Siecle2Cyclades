@@ -50,11 +50,11 @@ class DialogApp(QWidget):
 	def export(self):
 		# On importe le fichier csv
 		df = pd.read_excel(self.label1.text())
-    	# On remplace le nom des champs par la nomenclature Cyclade
+    		# On remplace le nom des champs par la nomenclature Cyclade
 		df.rename(columns = champs, inplace = True)
-    	# Remplacement des spés
+    		# Remplacement des spés
 		df.replace({'specialite1': SPE, 'specialite2': SPE, 'specialite3': SPE}, inplace=True)
-    	# Remplacement des LV
+    		# Remplacement des LV
 		df.replace({'LVA': LV, 'LVB': LV}, regex=True, inplace=True)
 		# Remplacement des pays de naissance et nationalités par les code pays
 		df.replace({'pays_naissance': pays, 'nationalite': pays}, inplace=True)
@@ -72,9 +72,9 @@ class DialogApp(QWidget):
 		# On chappe le dico des commune en enlevant accents et Majuscules
 		df.loc[mask, 'commune_naissance'] = df.replace({'commune_naissance': communes})
 		df.loc[mask, 'depCOM_naissance'] = df['commune_naissance'].str[:2]
-		mask = (df.pays_naissance == 100) & (df.depCOM_naissance != 97)
+		mask = (df.pays_naissance == 100) & (df.depCOM_naissance != '97')
 		df.loc[mask, 'depCOM_naissance'] = '0'+df['commune_naissance'].str[:2]
-		mask = (df.pays_naissance == 100) & (df.depCOM_naissance == 97)
+		mask = (df.pays_naissance == 100) & (df.depCOM_naissance == '97')
 		df.loc[mask, 'depCOM_naissance'] = df['commune_naissance'].str[:3]
 		# On crée des nouveaux champs avec les valeurs par défaut
 		df['etablissement'] = '0442286W'
